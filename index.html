@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CSS Animation and JavaScript Local Storage</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS3 + JS Assignment</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <h1>Animated Button</h1>
 
-<h1 id="welcomeMessage">Welcome!</h1>
+  <label for="colorSelect">Choose Animation Color:</label>
+  <select id="colorSelect">
+    <option value="red">Red</option>
+    <option value="blue">Blue</option>
+    <option value="green">Green</option>
+  </select>
 
-<button id="animateButton">Click Me!</button>
-<br><br>
-<label for="colorPreference">Choose a background color:</label>
-<input type="color" id="colorPreference">
-<button id="savePreference">Save Preference</button>
+  <button id="animateBtn">Click to Animate</button>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
