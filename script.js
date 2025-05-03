@@ -1,32 +1,28 @@
-// Function to store user preference
-function saveUserPreference() {
-  const color = document.getElementById('colorPreference').value;
-  localStorage.setItem('backgroundColor', color);
-  applyUserPreference();
+const btn = document.getElementById('animateBtn');
+const select = document.getElementById('colorSelect');
+
+// Load saved preference
+window.onload = () => {
+  const savedColor = localStorage.getItem('btnColor') || 'red';
+  applyColor(savedColor);
+  select.value = savedColor;
+};
+
+// Save preference and apply new style
+select.addEventListener('change', () => {
+  const color = select.value;
+  localStorage.setItem('btnColor', color);
+  applyColor(color);
+});
+
+// Animate on click
+btn.addEventListener('click', () => {
+  btn.classList.add('animate');
+  setTimeout(() => btn.classList.remove('animate'), 600);
+});
+
+// Apply color to button
+function applyColor(color) {
+  btn.classList.remove('red', 'blue', 'green');
+  btn.classList.add(color);
 }
-
-// Function to apply stored preference
-function applyUserPreference() {
-  const savedColor = localStorage.getItem('backgroundColor');
-  if (savedColor) {
-    document.body.style.backgroundColor = savedColor;
-  }
-}
-
-// Function to trigger animation
-function triggerAnimation() {
-  const button = document.getElementById('animateButton');
-  button.classList.add('bounce');
-
-  // Remove animation class after animation ends to allow re-triggering
-  setTimeout(() => {
-    button.classList.remove('bounce');
-  }, 600);
-}
-
-// Event listeners
-document.getElementById('savePreference').addEventListener('click', saveUserPreference);
-document.getElementById('animateButton').addEventListener('click', triggerAnimation);
-
-// Apply user preference on page load
-window.onload = applyUserPreference;
